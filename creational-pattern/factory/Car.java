@@ -7,7 +7,7 @@ public class Car extends Vehicle{
      }
 
     public void drive(){
-        System.out.println("I drive with" +  wheels + "wheels");
+        System.out.println("I drive with " +  wheels + " wheels");
     }
     
 

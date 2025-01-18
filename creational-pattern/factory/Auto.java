@@ -7,7 +7,7 @@ public class Auto extends Vehicle{
         this.wheels = wheels;
     }
     public void drive(){
-        System.out.println("I drive with" + wheels +"wheels");
+        System.out.println("I drive with " + wheels +" wheels");
     }
     
 }
