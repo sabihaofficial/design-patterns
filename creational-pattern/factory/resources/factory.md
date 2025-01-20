@@ -25,14 +25,34 @@ Concrete Product classes are the actual objects that the factory method creates.
 
 ![img_1.png](img_1.png)
 
+Advantage of factory pattern :  
+The factory pattern allows client class(the class which needs to use the object) to instantiate the object without having to worry about its internal instantiation.
+This avoids the overhead on client to check on the business logic as the factory will take care of it and give it to client.
 
-**When to use Singleton Method Design Pattern?**
-1. To ensure that only one instance of a class exists in your application.
-2. To provide a straightforward way for clients to access that instance from a specific location in your code.
-3. For subclassing, so clients can work with the extended version without changing the original Singleton.
-4. Used in situations like logging, managing connections to hardware or databases, caching data, or handling thread pools, where having just one instance makes sense
+Example :
+Base class
+1. Vehicle - Interface (gives the basic specification)
+2. Car and Auto -  concrete classes (incharge of giving the actual method to implement the specification based on type)
+3. VehicleFactory - Interface (gives the basic requirements for the factory of each type)
+4. CarFactory - concrete class (Responsible to actually create the car object)
+5. AutoFactory - concrete class (Responsible to actually create the car object)
 
-**Initialization Types of Singleton :**
-1. **Early initialization :** In this method, class is initialized whether it is to be used or not. The main advantage of this method is its simplicity. You initiate the class at the time of class loading. Its drawback is that class is always initialized whether it is being used or not.
-2. **Lazy initialization :** In this method, class in initialized only when it is required. It can save you from instantiating the class when you don’t need it. Generally, lazy initialization is used when we create a singleton class.
+Individual factories are required so that each type of object can be instantiated with any base logic.
+For example in factory we can ask the carFactory to initialize the car object with 4 wheels, while the auto with 3
+Thus the client creating these obejct wont have to worry on adding the wheels individually.
 
+**This can also be done, by instantiating the child class object like car or auto, but ideally basic requirements should not be updated by client unless necessary.**
+
+
+**When to use Factory Method Design Pattern?**
+1. JDBC uses factories to create connections and statements. Frameworks like Spring and Guice utilize factories for managing beans.
+2. Swing and JavaFX uses factories to produce UI components such as buttons and text fields, offering flexibility in design.
+3. Tools like Log4j and Logback employ factories to create loggers with various configurations, allowing for control over logging levels.
+4. Serialization frameworks use factories to generate objects from serialized data, accommodating different formats and versions.
+
+**Advantages of Factory Method Design Pattern**
+1. Separates object creation from client code, enhancing flexibility and maintainability since changes to creation don’t affect clients.
+2. New product types can be easily added without altering client code by simply creating new Concrete Creator subclasses.
+3. Simplifies unit testing by allowing mock product creation, enabling tests of various implementations without actual object dependencies.
+4. The factory method can be reused across different application parts, centralizing and streamlining object creation logic.
+5. Hides specific product classes from clients, reducing dependencies and improving maintainability.
